@@ -2,8 +2,8 @@
 
 Card này đi kèm mỗi báo cáo và được dùng lại ở Day 10. Mọi con số dưới đây lấy từ report do `python -m lab9.eval` sinh ra (`src/reports/*.json`), không gõ tay.
 
-- **Run ID / eval set SHA:** baseline `E-swarm-20261118-eddf` · PR `E-fixed-20261118-eddf`, `E-seeded_regression-20261118-eddf` · eval set sha `eddfa7c7cc4d`
-- **Phiên bản:** code: nhánh `starter/d09`, commit chứa report này, merge vào `main` (Lab 8 = repo gốc Day 8, không sửa) · eval set v1 (sha `eddfa7c7cc4d`) · metric_spec `1.0` · grader `lab9.graders.GRADERS` (cùng commit) · seeds 11/22/33/44/55 · bootstrap 1000 resample, percentile, rng 2027, 95%
+- **Run ID / eval set SHA:** baseline `E-swarm-20261118-28db` · PR `E-fixed-20261118-28db`, `E-seeded_regression-20261118-28db` · eval set sha `28db4d746752`
+- **Phiên bản:** code: nhánh `starter/d09`, commit chứa report này, merge vào `main` (Lab 8 = repo gốc Day 8, không sửa) · eval set v1 (sha `28db4d746752`) · metric_spec `1.0` · grader `lab9.graders.GRADERS` (cùng commit) · seeds 11/22/33/44/55 · bootstrap 1000 resample, percentile, rng 2027, 95%
 - **Eval set:** v1, 14 item × 5 seed = 70 trial, nguồn `lab8_public` (ma trận T01–T14). Nhãn nằm riêng ở `labels_v1.json`. Mỗi item có `failure_modes` theo `docs/failure_taxonomy.md` (FM-01…FM-09). `evalset --check` ra 0 problem.
 
 ## Metric & ngưỡng (`config/metric_spec.yaml`)
@@ -84,10 +84,10 @@ Card này đi kèm mỗi báo cáo và được dùng lại ở Day 10. Mọi co
 
 ## v2 (M5–M7): slice, nhiễu, chống gian lận eval
 
-- **Eval set v2:** sha `be8b1614bef2`, 28 item × 5 seed = 140 trial. Gồm 14 item v1 và 14 claim của pack adversarial giảng viên (C-101…C-114).
+- **Eval set v2:** sha `1c89f96dc446`, 28 item × 5 seed = 140 trial. Gồm 14 item v1 và 14 claim của pack adversarial giảng viên (C-101…C-114).
   - `config/fm_map.yaml` map 8 cơ chế tấn công sang FM-02…FM-09. Mỗi FM bị tấn công có ≥ 3 item.
   - `evalset --v2` ra 0 problem.
-- **Spec:** `config/metric_spec_v2.yaml` (2.0). Baseline `E-swarm-20261118-be8b`.
+- **Spec:** `config/metric_spec_v2.yaml` (2.0). Baseline `E-swarm-20261118-1c89`.
 
 ### Ngưỡng `pass_hat_5` chọn từ A/A
 
@@ -102,11 +102,11 @@ Card này đi kèm mỗi báo cáo và được dùng lại ở Day 10. Mọi co
 
 | Variant | Kỳ vọng | pass_rate toàn cục | Bị chặn bởi |
 |---|---|---|---|
-| `fixed` (`E-fixed-20261118-be8b`) | merge | 1.0 | — (merge) |
-| `honest_refactor` (`E-honest_refactor-20261118-be8b`) | merge | 1.0 | — (merge; `cost_per_success` +13.6% chỉ warn) |
+| `fixed` (`E-fixed-20261118-1c89`) | merge | 1.0 | — (merge) |
+| `honest_refactor` (`E-honest_refactor-20261118-1c89`) | merge | 1.0 | — (merge; `cost_per_success` +13.6% chỉ warn) |
 | `seeded_regression` | block | — | metric toàn cục + cả 3 slice |
-| `slice_regression` (`E-slice_regression-20261118-be8b`) | block | **0.9357 ≥ 0.85, CI chạm 0** | **chỉ** `slice:money_movement/pass_rate` (0.85 < 0.90, Δ −0.150 CI [−0.300, +0.000]) và `slice:money_movement/refund_amount_correct` (0.85 < 0.95) |
-| `flaky_regression` (`E-flaky_regression-20261118-be8b`) | block | 0.9143 | **`pass_hat_5` 0.5714 < 0.85**, và `pass_rate` Δ −0.064 CI [−0.114, −0.014], slice `money_movement` |
+| `slice_regression` (`E-slice_regression-20261118-1c89`) | block | **0.9357 ≥ 0.85, CI chạm 0** | **chỉ** `slice:money_movement/pass_rate` (0.85 < 0.90, Δ −0.150 CI [−0.300, +0.000]) và `slice:money_movement/refund_amount_correct` (0.85 < 0.95) |
+| `flaky_regression` (`E-flaky_regression-20261118-1c89`) | block | 0.9143 | **`pass_hat_5` 0.5714 < 0.85**, và `pass_rate` Δ −0.064 CI [−0.114, −0.014], slice `money_movement` |
 
 Đọc kết quả:
 - `slice_regression` cộng clause ở O-515 (C-014, C-105, C-106) chỉ trên seed lẻ. Lỗi này chỉ chạm 3/28 item, nên trung bình toàn cục vẫn trên sàn. Slice `money_movement` (12 item có hoàn tiền theo nhãn) làm lỗi lộ ra.

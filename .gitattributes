@@ -1,0 +1,4 @@
+# Eval set files are hashed byte-for-byte (eval_set_sha). Keep LF on every OS so a Windows
+# checkout (core.autocrlf=true) and the Linux CI hash the same bytes.
+src/data/eval/*.jsonl text eol=lf
+src/data/eval/*.json  text eol=lf
