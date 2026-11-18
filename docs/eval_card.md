@@ -102,11 +102,11 @@ Card này đi kèm mỗi báo cáo và được dùng lại ở Day 10. Mọi co
 
 | Variant | Kỳ vọng | pass_rate toàn cục | Bị chặn bởi |
 |---|---|---|---|
-| `fixed` (`E-fixed-…-be8b`) | merge | 1.0 | — (merge) |
-| `honest_refactor` | merge | 1.0 | — (merge; `cost_per_success` +13.6% chỉ warn) |
+| `fixed` (`E-fixed-20261118-be8b`) | merge | 1.0 | — (merge) |
+| `honest_refactor` (`E-honest_refactor-20261118-be8b`) | merge | 1.0 | — (merge; `cost_per_success` +13.6% chỉ warn) |
 | `seeded_regression` | block | — | metric toàn cục + cả 3 slice |
-| `slice_regression` (`E-slice_regression-…-be8b`) | block | **0.9357 ≥ 0.85, CI chạm 0** | **chỉ** `slice:money_movement/pass_rate` (0.85 < 0.90, Δ −0.150 CI [−0.300, +0.000]) và `slice:money_movement/refund_amount_correct` (0.85 < 0.95) |
-| `flaky_regression` (`E-flaky_regression-…-be8b`) | block | 0.9143 | **`pass_hat_5` 0.5714 < 0.85**, và `pass_rate` Δ −0.064 CI [−0.114, −0.014], slice `money_movement` |
+| `slice_regression` (`E-slice_regression-20261118-be8b`) | block | **0.9357 ≥ 0.85, CI chạm 0** | **chỉ** `slice:money_movement/pass_rate` (0.85 < 0.90, Δ −0.150 CI [−0.300, +0.000]) và `slice:money_movement/refund_amount_correct` (0.85 < 0.95) |
+| `flaky_regression` (`E-flaky_regression-20261118-be8b`) | block | 0.9143 | **`pass_hat_5` 0.5714 < 0.85**, và `pass_rate` Δ −0.064 CI [−0.114, −0.014], slice `money_movement` |
 
 Đọc kết quả:
 - `slice_regression` cộng clause ở O-515 (C-014, C-105, C-106) chỉ trên seed lẻ. Lỗi này chỉ chạm 3/28 item, nên trung bình toàn cục vẫn trên sàn. Slice `money_movement` (12 item có hoàn tiền theo nhãn) làm lỗi lộ ra.

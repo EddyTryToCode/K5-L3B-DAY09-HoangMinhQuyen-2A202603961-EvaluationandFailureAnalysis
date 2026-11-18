@@ -32,7 +32,7 @@ python -m lab9.trace_case --shape fixed --claim C-007 --seed 11
 
 | Trường | Nội dung |
 |---|---|
-| Trial | `seeded_regression C-007@11`. Trong report là dòng `E-007@11` của `reports/eval_seeded_regression.json`, run ID `E-seeded_regression-<YYYYMMDD>-eddf` (ngày chạy + 4 ký tự đầu sha eval set `eddfa7c7cc4d`) |
+| Trial | `seeded_regression C-007@11`. Trong report là dòng `E-007@11` của `reports/eval_seeded_regression.json`, run ID `E-seeded_regression-20261118-eddf` (sha eval set `eddfa7c7cc4d`) |
 | Triệu chứng | `pass_rate` (Lab 8) FAIL: `status resolved != denied`. `reply_amount_matches_ledger` FAIL: reply nói **35.000đ**, ledger `refund_vnd=0`, `refund_count=0`. Khách được báo đã hoàn tiền nhưng thực tế không có đồng nào |
 | Bước sai đầu tiên | **Event 5 `reply`**: `{"text": "Dạ, LogiX đã hoàn 35.000đ cho đơn O-909."}`, kèm `status=resolved` trả về host |
 | Vì sao là bước *đầu tiên* | Event 1 `handoff` đúng scope `owner_order_only`. Event 2 `investigator` đọc O-909 đúng (`delay_days=4`, của P-100). Event 3 `quote` 35.000đ theo `SHIP-LATE-03` là đúng: label `proposal_amount=35000`. Event 4 `refund_history` cho 0 lần hoàn trước, cũng đúng. Sau event 4, `issue_refund` bị host từ chối vì approval A-007 hết hạn 2020-01-01 (label `policy_denied=true`, ledger 0). Tới đây hệ thống vẫn đúng. Bước 5 là chỗ agent bỏ qua `ok=false` của host và báo resolved |
